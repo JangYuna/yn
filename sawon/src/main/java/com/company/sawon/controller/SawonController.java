@@ -32,11 +32,6 @@ public class SawonController {
 	@Autowired
 	private SawonService sawonService;
 	
-	@RequestMapping("insert32.do")
-	public String insert32() {
-		return "insert3_2";
-	}
-	
 	@RequestMapping("main.do")
 	public String main() {
 		return "main";
