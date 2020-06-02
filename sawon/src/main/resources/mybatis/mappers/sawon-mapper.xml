@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sawon">
+
+	<resultMap id="YooResult" type="yoo">
+		<id property="yu" column="yu"/>
+		<result property="yo" column="yo"/>
+	</resultMap>
+
+	<resultMap id="insaResult" type="insa">
+		<id property="insa_sabun" column="insa_sabun"/>
+		<result property="insa_join_day" column="insa_join_day"/>
+		<result property="insa_retire_day" column="insa_retire_day"/>
+		<result property="insa_put_yn" column="insa_put_yn"/>
+		<result property="insa_name" column="insa_name"/>
+		<result property="insa_reg_no" column="insa_reg_no"/>
+		<result property="insa_eng_name" column="insa_eng_name"/>
+		<result property="insa_phone" column="insa_phone"/>
+		<result property="insa_hp" column="insa_hp"/>
+		<result property="insa_carrier" column="insa_carrier"/>
+		<result property="insa_pos_gbn_code" column="insa_pos_gbn_code"/>
+		<result property="insa_cmp_reg_no" column="insa_cmp_reg_no"/>
+		<result property="insa_cmp_reg_image" column="insa_cmp_reg_image"/>
+		<result property="insa_sex" column="insa_sex"/>
+		<result property="insa_years" column="insa_years"/>
+		<result property="insa_email" column="insa_email"/>
+		<result property="insa_zip" column="insa_zip"/>
+		<result property="insa_addr1" column="insa_addr1"/>
+		<result property="insa_addr2" column="insa_addr2"/>
+		<result property="insa_dept_code" column="insa_dept_code"/>
+		<result property="insa_join_gbn_code" column="insa_join_gbn_code"/>
+		<result property="insa_id" column="insa_id"/>
+		<result property="insa_pwd" column="insa_pwd"/>
+		<result property="insa_salary" column="insa_salary"/>
+		<result property="insa_kosa_reg_yn" column="insa_kosa_reg_yn"/>
+		<result property="insa_kosa_class_code" column="insa_kosa_class_code"/>
+		<result property="insa_mil_yn" column="insa_mil_yn"/>
+		<result property="insa_mil_type" column="insa_mil_type"/>
+		<result property="insa_mil_level" column="insa_mil_level"/>
+		<result property="insa_mil_startdate" column="insa_mil_startdate"/>
+		<result property="insa_mil_enddate" column="insa_mil_enddate"/>
+		<result property="insa_join_type" column="insa_join_type"/>
+		<result property="insa_gart_level" column="insa_gart_level"/>
+		<result property="insa_self_intro" column="insa_self_intro"/>
+		<result property="insa_crm_name" column="insa_crm_name"/>
+		<result property="insa_profile" column="insa_profile"/>
+	</resultMap>
+	
+	<resultMap id="insaResultList" type="insa">
+		<result property="insa_sabun" column="insa_sabun"/>
+		<result property="insa_join_day" column="insa_join_day"/>
+		<result property="insa_retire_day" column="insa_retire_day"/>
+		<result property="insa_put_yn" column="insa_put_yn"/>
+		<result property="insa_name" column="insa_name"/>
+		<result property="insa_reg_no" column="insa_reg_no"/>
+		<result property="insa_eng_name" column="insa_eng_name"/>
+		<result property="insa_phone" column="insa_phone"/>
+		<result property="insa_hp" column="insa_hp"/>
+		<result property="insa_carrier" column="insa_carrier"/>
+		<result property="insa_pos_gbn_code" column="insa_pos_gbn_code"/>
+		<result property="insa_cmp_reg_no" column="insa_cmp_reg_no"/>
+		<result property="insa_cmp_reg_image" column="insa_cmp_reg_image"/>
+		<result property="insa_sex" column="insa_sex"/>
+		<result property="insa_years" column="insa_years"/>
+		<result property="insa_email" column="insa_email"/>
+		<result property="insa_zip" column="insa_zip"/>
+		<result property="insa_addr1" column="insa_addr1"/>
+		<result property="insa_addr2" column="insa_addr2"/>
+		<result property="insa_dept_code" column="insa_dept_code"/>
+		<result property="insa_join_gbn_code" column="insa_join_gbn_code"/>
+		<result property="insa_id" column="insa_id"/>
+		<result property="insa_pwd" column="insa_pwd"/>
+		<result property="insa_salary" column="insa_salary"/>
+		<result property="insa_kosa_reg_yn" column="insa_kosa_reg_yn"/>
+		<result property="insa_kosa_class_code" column="insa_kosa_class_code"/>
+		<result property="insa_mil_yn" column="insa_mil_yn"/>
+		<result property="insa_mil_type" column="insa_mil_type"/>
+		<result property="insa_mil_level" column="insa_mil_level"/>
+		<result property="insa_mil_startdate" column="insa_mil_startdate"/>
+		<result property="insa_mil_enddate" column="insa_mil_enddate"/>
+		<result property="insa_join_type" column="insa_join_type"/>
+		<result property="insa_gart_level" column="insa_gart_level"/>
+		<result property="insa_self_intro" column="insa_self_intro"/>
+		<result property="insa_crm_name" column="insa_crm_name"/>
+		<result property="insa_profile" column="insa_profile"/>
+	</resultMap>
+	
+	<select id="insacomList" resultType="Insacom">
+		select * from insa_com
+	</select>
+	
+	<insert id="memberInsert" parameterType="Insa" flushCache="true" statementType="PREPARED">
+		<![CDATA[
+		insert into insa values(
+		sabun_seq.nextval,
+		#{insa_join_day},
+		#{insa_retire_day},
+		#{insa_put_yn},
+		#{insa_name},
+		#{insa_reg_no},
+		#{insa_eng_name},
+		#{insa_phone},
+		#{insa_hp},
+		#{insa_carrier},
+		#{insa_pos_gbn_code},
+		#{insa_cmp_reg_no},
+		#{insa_cmp_reg_image},
+		#{insa_sex},
+		#{insa_years},
+		#{insa_email},
+		#{insa_zip},
+		#{insa_addr1},
+		#{insa_addr2},
+		#{insa_dept_code},
+		#{insa_join_gbn_code},
+		#{insa_id},
+		#{insa_pwd},
+		#{insa_salary},
+		#{insa_kosa_reg_yn},
+		#{insa_kosa_class_code},
+		#{insa_mil_yn},
+		#{insa_mil_type},
+		#{insa_mil_level},
+		#{insa_mil_startdate},
+		#{insa_mil_enddate},
+		#{insa_join_type},
+		#{insa_gart_level},
+		#{insa_self_intro},
+		#{insa_crm_name},
+		#{insa_profile}
+		)
+		]]>
+	</insert>
+	
+	<select id="memberSearch" resultType="Insa" parameterType="Insa">
+		select insa_sabun, insa_name, regexp_replace(replace(insa_reg_no,'-'),'[[:digit:]]','*',regexp_instr(replace(insa_reg_no,'-'),'[[:digit:]]')+7) insa_reg_no, insa_hp, insa_pos_gbn_code,
+		insa_join_day, insa_retire_day, insa_put_yn, insa_salary 
+		from (select rownum as rnum, a.* from (select * from insa where 1=1
+		<if test="insa_sabun!=null and insa_sabun!=''">AND insa_sabun = #{insa_sabun}</if>
+		<if test="insa_name!=null and insa_name!=''">AND insa_name like '%'||#{insa_name}||'%'</if>
+		<if test="insa_join_type!=null and insa_join_type!=''">AND insa_join_type = #{insa_join_type}</if>
+		<if test="insa_put_yn!=null and insa_put_yn!=''">AND insa_put_yn = #{insa_put_yn}</if>
+		<if test="insa_pos_gbn_code!=null and insa_pos_gbn_code!=''">AND insa_pos_gbn_code = #{insa_pos_gbn_code}</if>
+		<if test="insa_join_day!=null and insa_join_day!=''">AND insa_join_day like '%'||#{insa_join_day}||'%'</if>
+		<if test="insa_retire_day!=null and insa_retire_day!=''">AND insa_retire_day like '%'||#{insa_retire_day}||'%'</if>
+		<if test="insa_join_gbn_code!=null and insa_join_gbn_code!=''">AND insa_join_gbn_code = #{insa_join_gbn_code}</if>
+		order by insa_sabun desc)a)b
+		<![CDATA[
+		where rnum between #{startPage} and #{endPage}
+		]]>
+	</select>
+	
+	<select id="idcheck" resultType="Insa" parameterType="String">
+		<![CDATA[
+		select insa_id from insa
+		where insa_id=#{insa_id}
+		]]>
+	</select>
+	
+	<select id="sabunSelect" resultType="Insa" parameterType="String">
+		<![CDATA[
+		select * from insa
+		where insa_sabun=#{insa_sabun}
+		]]>
+	</select>
+	
+	<insert id="yuInsert" parameterType="Yoo" flushCache="true" statementType="PREPARED">
+		<![CDATA[
+		insert into yoo values(
+		#{yu},
+		#{yo}
+		)
+		]]>
+	</insert>
+	
+	<update id="memberUpdate" parameterType="Insa" flushCache="true" statementType="PREPARED">
+		<![CDATA[
+		update insa
+		set insa_join_day = #{insa_join_day},
+		insa_retire_day = #{insa_retire_day},
+		insa_put_yn = #{insa_put_yn},
+		insa_name = #{insa_name},
+		insa_reg_no = #{insa_reg_no},
+		insa_eng_name = #{insa_eng_name},
+		insa_phone = #{insa_phone},
+		insa_hp = #{insa_hp},
+		insa_carrier = #{insa_carrier},
+		insa_pos_gbn_code = #{insa_pos_gbn_code},
+		insa_cmp_reg_no = #{insa_cmp_reg_no},
+		insa_cmp_reg_image = #{insa_cmp_reg_image},
+		insa_sex = #{insa_sex},
+		insa_years = #{insa_years},
+		insa_email = #{insa_email},
+		insa_zip = #{insa_zip},
+		insa_addr1 = #{insa_addr1},
+		insa_addr2 = #{insa_addr2},
+		insa_dept_code = #{insa_dept_code},
+		insa_join_gbn_code = #{insa_join_gbn_code},
+		insa_pwd = #{insa_pwd},
+		insa_salary = #{insa_salary},
+		insa_kosa_reg_yn = #{insa_kosa_reg_yn},
+		insa_kosa_class_code = #{insa_kosa_class_code},
+		insa_mil_yn = #{insa_mil_yn},
+		insa_mil_type = #{insa_mil_type},
+		insa_mil_level = #{insa_mil_level},
+		insa_mil_startdate = #{insa_mil_startdate},
+		insa_mil_enddate = #{insa_mil_enddate},
+		insa_join_type = #{insa_join_type},
+		insa_gart_level = #{insa_gart_level},
+		insa_self_intro = #{insa_self_intro},
+		insa_crm_name = #{insa_crm_name},
+		insa_profile = #{insa_profile}
+		where insa_sabun=#{insa_sabun}
+		]]>
+	</update>
+	
+	<delete id="memberDelete">
+	<![CDATA[
+		delete from insa
+		where insa_sabun=#{insa_sabun}
+	]]>
+	</delete>
+	
+	<select id="maxSabunSelect" resultType="String">
+	<![CDATA[
+		select max(insa_sabun) from insa
+	]]>
+	</select>
+	
+	<select id="totalList" resultType="int" parameterType="Insa">
+		select count(*) from insa where 1=1
+		<if test="insa_sabun!=null and insa_sabun!=''">AND insa_sabun = #{insa_sabun}</if>
+		<if test="insa_name!=null and insa_name!=''">AND insa_name like '%'||#{insa_name}||'%'</if>
+		<if test="insa_join_type!=null and insa_join_type!=''">AND insa_join_type = #{insa_join_type}</if>
+		<if test="insa_put_yn!=null and insa_put_yn!=''">AND insa_put_yn = #{insa_put_yn}</if>
+		<if test="insa_pos_gbn_code!=null and insa_pos_gbn_code!=''">AND insa_pos_gbn_code = #{insa_pos_gbn_code}</if>
+		<if test="insa_join_day!=null and insa_join_day!=''">AND insa_join_day like '%'||#{insa_join_day}||'%'</if>
+		<if test="insa_retire_day!=null and insa_retire_day!=''">AND insa_retire_day like '%'||#{insa_retire_day}||'%'</if>
+		<if test="insa_join_gbn_code!=null and insa_join_gbn_code!=''">AND insa_join_gbn_code = #{insa_join_gbn_code}</if>		
+	</select>
+	
+	<update id="updateFile1" parameterType="Insa">
+		update insa set insa_cmp_reg_image = #{insa_cmp_reg_image}
+		where insa_sabun = #{insa_sabun}
+	</update>
+	
+	<update id="updateFile2" parameterType="Insa">
+		update insa set insa_carrier = #{insa_carrier}
+		where insa_sabun = #{insa_sabun}
+	</update>
+	
+</mapper>
